@@ -1,0 +1,15 @@
+.full-width-container {
+  /* overflow-y: hidden; */
+}
+
+.full-width-container mat-form-field {
+  width: 100%;
+}
+
+.mat-radio-group-container {
+  margin: 16px 0;
+}
+
+/* .mat-radio-button ~ */ .mat-radio-button {
+  margin-left: 16px;
+}

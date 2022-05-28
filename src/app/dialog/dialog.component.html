@@ -1,0 +1,60 @@
+<h1 mat-dialog-title>Add Product Form</h1>
+<div mat-dialog-content class="full-width-container">
+	<form [formGroup]="productForm">
+		<!-- Product Name -->
+		<mat-form-field appearance="outline" >
+			<mat-label>Product Name</mat-label>
+			<input formControlName="productName" matInput placeholder="Phone unit name">
+			<!-- <mat-hint>Hint</mat-hint> -->
+		</mat-form-field>
+
+		<!-- Category -->
+		<mat-form-field appearance="outline">
+			<mat-label>Category</mat-label>
+			<mat-select formControlName="category" placeholder="Phone category">
+				<mat-option value="Apple">Apple</mat-option>
+				<mat-option value="Samsung">Samsung</mat-option>
+				<mat-option value="Huawei">Huawei</mat-option>
+				<mat-option value="Oppo">Oppo</mat-option>
+			</mat-select>
+		</mat-form-field>
+		
+		<!-- Delivery Date -->
+		<mat-form-field appearance="outline">
+			<mat-label>Delivered on</mat-label>
+			<input formControlName="deliveryDate" matInput [matDatepicker]="picker">
+			<mat-hint>MM/DD/YYYY</mat-hint>
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+		</mat-form-field>
+		<!-- <button mat-raised-button (click)="picker.open()">Open</button> -->
+		
+		<!-- Color -->
+		<div class="mat-radio-group-container">
+			<label for="">Choose Color:</label>
+			<mat-radio-group formControlName="color" aria-label="Select an option">
+				<mat-radio-button *ngFor="let color of colorList" [value]="color">
+					{{color}}
+				</mat-radio-button>
+			</mat-radio-group>
+		</div>
+	
+		<!-- Price -->
+		<mat-form-field appearance="outline" >
+			<mat-label>Price</mat-label>
+			<mat-icon matPrefix aria-hidden="false">attach_money</mat-icon>
+			<input formControlName="price" matInput type="number" placeholder="Input price">
+		</mat-form-field>
+		
+		<!-- Description -->
+		<mat-form-field appearance="outline" >
+			<mat-label>Description</mat-label>
+			<textarea formControlName="description" matInput type="number" placeholder="Input description"></textarea>
+		</mat-form-field>
+	</form>
+</div>
+<mat-dialog-actions>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-raised-button color="accent" (click)="addProduct()">{{actionBtn}}</button>
+  <button mat-raised-button mat-dialog-close color="warn" tabindex="-1">Cancel</button>
+</mat-dialog-actions>
